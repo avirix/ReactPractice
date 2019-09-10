@@ -1,28 +1,30 @@
 ﻿using System.Collections.Generic;
 
+using Api.Models;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class LoginController : ControllerBase
     {
-        List<string> Usernames = new List<string>() { "Alex", "Ann", "Kate" };
+        static List<string> Usernames = new List<string>() { "Alex", "Ann", "Kate" };
 
-        // GET api/values
-        [HttpGet]
+        [HttpGet("users")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public ActionResult<IEnumerable<string>> Get()
         {
             return Usernames;
         }
 
-        // POST api/values
-        [HttpPost]
-        public ActionResult Post([FromBody] string value)
+        [HttpPost("login")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public ActionResult Post([FromBody] Username username)
         {
-            Usernames.Add(value);
-            return Ok();
+            Usernames.Add(username.Name);
+            return Ok(Usernames);
         }
     }
 }

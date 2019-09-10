@@ -1,9 +1,9 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Users from './components/Users';
 import Login from './components/Login'; 
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Switch, Route } from 'react-router-dom';
 
 const App: React.FC = () => {
   return (
