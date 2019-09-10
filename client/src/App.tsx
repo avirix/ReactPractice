@@ -1,16 +1,21 @@
 import React from 'react';
-import Home from './components/Home';
+import Users from './components/Users';
+import Login from './components/Login'; 
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Switch, Route } from 'react-router-dom';
 
 const App: React.FC = () => {
   return (
     <div className="container">
       <header className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">Simple app (React + .NET Core)</a>
+        <a className="navbar-brand" href="/">Simple app (React + .NET Core)</a>
         <Header />
       </header>
-      <Home />
+      <Switch>
+        <Route exact path='/' component={Users} />
+        <Route path='/login' component={Login} />
+      </Switch>
     </div>
   );
 }
