@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+
+using Api.Middlewares;
+
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,10 +19,10 @@ namespace Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            //test cors config for mBanc
+            services.AddCors(o => o.AddPolicy("AllowAny", builder =>
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
@@ -27,14 +31,20 @@ namespace Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors("MyPolicy");
+            var webSocketOptions = new WebSocketOptions
+            {
+                KeepAliveInterval = TimeSpan.FromSeconds(120),
+                ReceiveBufferSize = 4 * 1024
+            };
+            app.UseWebSockets(webSocketOptions);
+            app.UseCors("AllowAny");
+            app.UseMiddleware<UsernamesMiddleware>();
             app.UseMvc();
         }
     }

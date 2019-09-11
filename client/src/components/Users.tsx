@@ -1,13 +1,27 @@
 import React from 'react';
 import axios from 'axios';
+import { w3cwebsocket as W3CWebSocket } from 'websocket';
+
+const client = new W3CWebSocket('ws://192.168.88.103:5000/socket');
 
 class Users extends React.Component {
     state: { usernames: string[] } = {
         usernames: []
     };
 
+    componentWillMount() {
+        client.onopen = () => {
+            console.log('WebSocket Client Connected');
+        };
+        client.onmessage = (message) => {
+            const persons = this.state.usernames;
+            persons.push(message.data)
+            this.setState({ usernames: persons });
+        };
+    }
+
     componentDidMount() {
-        axios.get(`http://127.0.0.1:5000/api/users`)
+        axios.get(`http://192.168.88.103:5000/api/users`)
             .then(res => {
                 const persons = res.data;
                 this.setState({ usernames: persons });

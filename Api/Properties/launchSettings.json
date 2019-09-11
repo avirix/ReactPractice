@@ -17,7 +17,7 @@
     },
     "Api": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://192.168.88.103:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

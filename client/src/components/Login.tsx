@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class Login extends React.Component {
+class Login extends React.Component<any> {
     state: { name: string } = { name: "" };
 
     handleChange = (event: any) => {
@@ -11,11 +11,11 @@ class Login extends React.Component {
     handleSubmit = (event: any) => {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:5000/api/login`, { name: this.state.name })
+        axios.post(`http://192.168.88.103:5000/api/login`, { name: this.state.name })
             .then(res => {
                 console.log(res);
-                console.log(res.data);
-            })
+                this.props.history.push('/');
+            });
     }
 
     render() {
@@ -28,8 +28,9 @@ class Login extends React.Component {
                     onChange={this.handleChange} />
                 <div className="input-group-append">
                     <button className="btn btn-outline-secondary"
-                        type="button" id="button-addon2"
-                        onClick={this.handleSubmit}>Save</button>
+                        type="button" onClick={this.handleSubmit}>
+                        Save
+                    </button>
                 </div>
             </div>
         );

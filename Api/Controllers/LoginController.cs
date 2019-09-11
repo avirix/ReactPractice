@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
+using Api.Middlewares;
 using Api.Models;
 
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +22,10 @@ namespace Api.Controllers
         }
 
         [HttpPost("login")]
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public ActionResult Post([FromBody] Username username)
+        public async Task<ActionResult> PostAsync([FromBody] Username username)
         {
             Usernames.Add(username.Name);
+            await UsernamesMiddleware.Send(username.Name);
             return Ok(Usernames);
         }
     }
