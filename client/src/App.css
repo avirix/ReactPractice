@@ -31,3 +31,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+.board{  
+  position: absolute;
+  height: 600px;
+  width: 800px;
+  border: 4px double red ;
+}
+
+.square{
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border: 4px double black ;
+}
+
+.active{
+  border: 4px dotted yellow ;
+}
