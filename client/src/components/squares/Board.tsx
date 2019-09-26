@@ -117,6 +117,7 @@ class Board extends React.Component<{}, BoardState>{
     render() {
         return (
             <div className={"board"}
+                style={{marginTop: '-20px'}}
                 onMouseDown={this.onDown}
                 onMouseMove={this.onMove}
                 onMouseUp={this.onUp} >

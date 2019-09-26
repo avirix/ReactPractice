@@ -30,7 +30,7 @@ class Users extends React.Component {
 
     render() {
         return (
-            <div>
+            <div  style={{marginTop: '-10px'}}>
                 <ul className="list-group">
                     {this.state.usernames.map(person =>
                         <li className="list-group-item" key={person}>{person}</li>)}

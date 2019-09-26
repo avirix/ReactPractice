@@ -10,7 +10,7 @@ import TimePicker from './components/time/TimePicker';
 const App: React.FC = () => {
   return (
     <div className="container">
-      <header className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <header className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom: '20px'}}>
         <a className="navbar-brand" href="/">Simple app (React + .NET Core)</a>
         <Header />
       </header>
