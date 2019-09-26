@@ -32,28 +32,26 @@ class SimpleTimePicker extends React.Component {
     render() {
         return (
             <div className="col-12 col-md-6">
-                <form>
-                    <div className="form-group mb-2">
-                        <input type="time" className="form-control"
-                            value={this.state.hours + ':' + this.state.minutes}
-                            onChange={(e) => this.onTextChange(e)} />
-                    </div>
-                    <h1>
-                        {this.state.hours + ':' + this.state.minutes}
-                    </h1>
-                    <div className="form-group">
-                        <label>Hour: {this.state.hours}</label>
-                        <input type="range" min="0" max="23" step="1"
-                            className="form-control-range"
-                            value={this.state.hours}
-                            onChange={(e) => this.onHoursChange(e)} />
-                        <label>Minutes: {this.state.minutes}</label>
-                        <input type="range" min="0" max="59" step="1"
-                            className="form-control-range"
-                            value={this.state.minutes}
-                            onChange={(e) => this.onMinutesChange(e)} />
-                    </div>
-                </form>
+                <div className="mb-2">
+                    <input type="time" className="form-control"
+                        value={this.state.hours + ':' + this.state.minutes}
+                        onChange={(e) => this.onTextChange(e)} />
+                </div>
+                <h1>
+                    {this.state.hours + ':' + this.state.minutes}
+                </h1>
+                <div>
+                    <label>Hour: {this.state.hours}</label>
+                    <input type="range" min="0" max="23" step="1"
+                        className="form-control-range"
+                        value={this.state.hours}
+                        onChange={(e) => this.onHoursChange(e)} />
+                    <label>Minutes: {this.state.minutes}</label>
+                    <input type="range" min="0" max="59" step="1"
+                        className="form-control-range"
+                        value={this.state.minutes}
+                        onChange={(e) => this.onMinutesChange(e)} />
+                </div>
             </div>
         )
     }
