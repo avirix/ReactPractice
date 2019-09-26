@@ -4,8 +4,9 @@ import Users from './components/Users';
 import Login from './components/Login'; 
 import Header from './components/Header';
 import Board from './components/squares/Board';
+import SimpleTimePicker from './components/time/SimpleTimePicker';
 import 'bootstrap/dist/css/bootstrap.css';
-import TimePicker from './components/time/TimePicker';
+import TimePicker from './components/timepicker/TimePicker';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +19,8 @@ const App: React.FC = () => {
         <Route exact path='/' component={Users} />
         <Route path='/login' component={Login} />
         <Route path='/squares' component={Board} />
-        <Route path='/time' component={TimePicker} />
+        <Route path='/time' component={SimpleTimePicker} />
+        <Route path='/time_picker' component={TimePicker} />        
       </Switch>
     </div>
   );
