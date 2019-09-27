@@ -14,7 +14,7 @@ interface TimePickerState {
 class TimePicker extends React.Component<TimePickerProps, TimePickerState> {
     constructor(props: TimePickerProps) {
         super(props);
-        const time = props.time ? "12:50" : props.time;
+        const time = props.time ? props.time : "12:50";
         const splittedTime = time
             .split(':')
             .map(e => e.length === 1 ? "0" + e : e);
