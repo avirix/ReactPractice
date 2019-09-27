@@ -19,6 +19,7 @@ class Board extends React.Component<{}, BoardState>{
             .btnTapped
             .bind(this);
     }
+    
     btnTapped() {
         console.log('tapped');
     }
